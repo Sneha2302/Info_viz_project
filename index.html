@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Bar chart with D3.js</title>
+  
+<link href="style.css" rel="stylesheet">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script type="text/javascript">
+function getData(title)
+{
+    switch(title)
+    {
+        case "1":
+            var s = document.createElement("script");
+                s.type = "text/javascript";
+                s.src = "graph1.js";
+                s.innerHTML = null;
+                s.id = "widget";
+                var list = document.getElementById("output"); 
+                // if (typeof(list) != 'undefined' && list != null)
+                // {
+                //   list.removeChild(list.childNode[0]);
+                // }
+                list.innerHTML = "<h3>People affected by Gun violence over the years</h3>";
+                list.appendChild(s);
+        break;
+        case "2":
+            var s = document.createElement("script");
+                s.type = "text/javascript";
+                s.src = "graph2.js";
+                s.innerHTML = null;
+                s.id = "widget";
+                var list = document.getElementById("output"); 
+                // var newList = document.createElement("output");
+                list.innerHTML = "<h3>Number of incidents for each incident type</h3>";
+                list.appendChild(s);
+        break;
+        default:
+        void(0);
+    }
+}
+</script>
+</head>
+<body>
+  <div id='layout'>
+    <!-- <h2>Bar chart example</h2> -->
+    <select onChange="getData(this.value);">
+    <option value="">Select</option>
+    <option value="1">Graph 1</option>
+    <option value="2">Graph 2</option>
+</select>
+<div id="output">
+    <script id="widget" type="text/javascript"></script>
+</div>
+  </div>
+  <!-- <script src="script4.js"></script> -->
+</body>
+</html>
